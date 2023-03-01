@@ -16,10 +16,10 @@ class User extends Model implements Authenticatable
      */
     use CanAuthenticate;
     public static $objectClasses = [
-        'top',
-        'person',
-        'organizationalperson',
-        'user',
+        // 'top',
+        // 'person',
+        // 'organizationalperson',
+        // 'user',
     ];
 
     protected $guidKey = 'uuid';
