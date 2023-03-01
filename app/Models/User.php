@@ -4,19 +4,19 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Illuminate\Foundation\Auth\User as Authenticatable;
+ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use LdapRecord\Models\Model;
+// use LdapRecord\Models\Model;
 
- use Illuminate\Contracts\Auth\Authenticatable;
+// use Illuminate\Contracts\Auth\Authenticatable;
 
 
-use LdapRecord\Models\Concerns\CanAuthenticate;
+// use LdapRecord\Models\Concerns\CanAuthenticate;
 
-class User extends Model implements Authenticatable
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,CanAuthenticate;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -28,13 +28,13 @@ class User extends Model implements Authenticatable
         'email',
         'password',
     ];
-    public static $objectClasses = [
-        // 'top',
-        // 'person',
-        // 'organizationalperson',
-        // 'user',
-    ];
-    protected $guidKey = 'uuid';
+    // public static $objectClasses = [
+    //     // 'top',
+    //     // 'person',
+    //     // 'organizationalperson',
+    //     // 'user',
+    // ];
+    // protected $guidKey = 'uuid';
 
     /**
      * The attributes that should be hidden for serialization.
