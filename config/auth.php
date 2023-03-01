@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 return [
 
     /*
@@ -38,7 +40,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'ldap',
+            'provider' => 'users',
         ],
     ],
 
@@ -60,11 +62,25 @@ return [
     */
 
     'providers' => [
-        'ldap' => [
+        // 'ldap' => [
+        //     'driver' => 'ldap',
+        //     'model' => LdapRecord\Models\ActiveDirectory\User::class,
+        //     'rules' => [
+        //         // App\Ldap\Rules\OnlyAdministrators::class,
+        //     ],
+        // ],
+
+        'users' => [
             'driver' => 'ldap',
             'model' => LdapRecord\Models\ActiveDirectory\User::class,
-            'rules' => [
-                // App\Ldap\Rules\OnlyAdministrators::class,
+            'rules' => [],
+            'database' => [
+                'model' => User::class,
+                'sync_passwords' => false,
+                'sync_attributes' => [
+                    'name' => 'cn',
+                    'email' => 'mail',
+                ],
             ],
         ],
 
